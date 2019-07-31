@@ -9,3 +9,21 @@
 #
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
+alias Ownership.Accounts.User
+alias Ownership.Repo
+
+%User{
+  type: "basura",
+  name: "Jameny Rahmeny",
+  email: "lixo@basura.com",
+  cpf: "00077788844",
+  phone: "404-not-found",
+  class: "lixo",
+  cep: "88037-000",
+  address: "Corrego",
+  neighbourhood: "Zona Leste",
+  city: "Floripa",
+  number: 404,
+  state: "SC"
+}
+|> Repo.insert!()
