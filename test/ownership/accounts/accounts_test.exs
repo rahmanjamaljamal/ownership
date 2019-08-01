@@ -6,9 +6,48 @@ defmodule Ownership.AccountsTest do
   describe "users" do
     alias Ownership.Accounts.User
 
-    @valid_attrs %{address: "some address", cep: "some cep", city: "some city", class: "some class", cpf: "some cpf", email: "some email", name: "some name", neighbourhood: "some neighbourhood", number: 42, phone: "some phone", state: "some state", type: "some type"}
-    @update_attrs %{address: "some updated address", cep: "some updated cep", city: "some updated city", class: "some updated class", cpf: "some updated cpf", email: "some updated email", name: "some updated name", neighbourhood: "some updated neighbourhood", number: 43, phone: "some updated phone", state: "some updated state", type: "some updated type"}
-    @invalid_attrs %{address: nil, cep: nil, city: nil, class: nil, cpf: nil, email: nil, name: nil, neighbourhood: nil, number: nil, phone: nil, state: nil, type: nil}
+    @valid_attrs %{
+      address: "some address",
+      cep: "some cep",
+      city: "some city",
+      class: "some class",
+      cpf: "some cpf",
+      email: "some email",
+      name: "some name",
+      neighbourhood: "some neighbourhood",
+      number: 42,
+      phone: "some phone",
+      state: "some state",
+      type: "some type"
+    }
+    @update_attrs %{
+      address: "some updated address",
+      cep: "some updated cep",
+      city: "some updated city",
+      class: "some updated class",
+      cpf: "some updated cpf",
+      email: "some updated email",
+      name: "some updated name",
+      neighbourhood: "some updated neighbourhood",
+      number: 43,
+      phone: "some updated phone",
+      state: "some updated state",
+      type: "some updated type"
+    }
+    @invalid_attrs %{
+      address: nil,
+      cep: nil,
+      city: nil,
+      class: nil,
+      cpf: nil,
+      email: nil,
+      name: nil,
+      neighbourhood: nil,
+      number: nil,
+      phone: nil,
+      state: nil,
+      type: nil
+    }
 
     def user_fixture(attrs \\ %{}) do
       {:ok, user} =
