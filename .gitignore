@@ -16,5 +16,5 @@ erl_crash.dump
 /config/*.secret.exs
 
 # commands help
-commands.ex
+commands.py
 db_warmup.pdf

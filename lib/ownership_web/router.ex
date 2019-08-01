@@ -5,7 +5,13 @@ defmodule OwnershipWeb.Router do
     plug(:accepts, ["json"])
   end
 
-  scope "/api", OwnershipWeb do
+  scope "/" do
     pipe_through(:api)
+
+    forward("/graphiql", Absinthe.Plug.GraphiQL,
+      schema: OwnershipWeb.Schema,
+      interface: :simple,
+      context: %{pubsub: OwnershipWeb.Endpoint}
+    )
   end
 end
