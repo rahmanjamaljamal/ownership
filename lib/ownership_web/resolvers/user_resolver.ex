@@ -6,9 +6,9 @@ defmodule OwnershipWeb.UserResolver do
     {:ok, users}
   end
 
-  def create_user(_root, args, _info) do
+  def create_user(_root, %{input: input}, _info) do
     # TODO: add detailed error message handling later
-    case Accounts.create_user(args) do
+    case Accounts.create_user(input) do
       {:ok, user} ->
         {:ok, user}
 

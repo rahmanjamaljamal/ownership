@@ -15,6 +15,7 @@ defmodule OwnershipWeb.Schema do
   mutation do
     @desc "register a new user"
     field :create_user, type: :user_type do
+      arg(:input, non_null(:user_input_type))
       resolve(&UserResolver.create_user/3)
     end
   end
