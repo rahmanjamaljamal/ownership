@@ -16,6 +16,8 @@ defmodule Ownership.Accounts.User do
     field(:state, :string)
     field(:type, :string)
 
+    has_many(:cars, Ownership.Automobiles.Car)
+
     timestamps()
   end
 
