@@ -49,8 +49,9 @@ defmodule Ownership.Automobiles do
       {:error, %Ecto.Changeset{}}
 
   """
-  def create_car(attrs \\ %{}) do
-    %Car{}
+  def create_car(user, attrs \\ %{}) do
+    # Ecto.build_assoc(user, :cars)
+    %Car{user_id: user.id}
     |> Car.changeset(attrs)
     |> Repo.insert()
   end
