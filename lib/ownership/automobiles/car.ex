@@ -11,9 +11,8 @@ defmodule Ownership.Automobiles.Car do
     field(:renavam, :string)
     field(:transmission, :string)
     field(:year, :integer)
-    field(:user_id, :id)
 
-    belongs_to(:users, Ownership.Accounts.User)
+    belongs_to(:users, Ownership.Accounts.User, foreign_key: :user_id)
 
     timestamps()
   end
@@ -41,5 +40,6 @@ defmodule Ownership.Automobiles.Car do
       :renavam,
       :plate
     ])
+    |> foreign_key_constraint(:user_id)
   end
 end
