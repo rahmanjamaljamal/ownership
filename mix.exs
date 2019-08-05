@@ -43,6 +43,7 @@ defmodule Ownership.Mixfile do
       {:absinthe, "~> 1.4.0"},
       {:absinthe_plug, "~> 1.4.0"},
       {:jason, "~> 1.1.0"},
+      {:absinthe_ecto, "~> 0.1.3"},
       {:dataloader, "~> 1.0.0"}
     ]
   end
