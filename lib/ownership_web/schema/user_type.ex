@@ -1,5 +1,6 @@
 defmodule OwnershipWeb.Schema.Types.UserType do
   use Absinthe.Schema.Notation
+  use Absinthe.Ecto, repo: Ownership.Repo
 
   object :user_type do
     field(:id, non_null(:id))
@@ -15,6 +16,7 @@ defmodule OwnershipWeb.Schema.Types.UserType do
     field(:phone, non_null(:string))
     field(:state, non_null(:string))
     field(:type, non_null(:string))
+    field(:car, list_of(:car_type), resolve: assoc(:cars))
   end
 
   input_object :user_input_type do
