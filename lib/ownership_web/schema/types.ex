@@ -3,4 +3,5 @@ defmodule OwnershipWeb.Schema.Types do
   alias OwnershipWeb.Schema.Types
 
   import_types(Types.UserType)
+  import_types(Types.CarType)
 end
