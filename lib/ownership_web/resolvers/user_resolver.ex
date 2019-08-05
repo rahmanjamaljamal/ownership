@@ -2,8 +2,7 @@ defmodule OwnershipWeb.UserResolver do
   alias Ownership.Accounts
 
   def all_users(_root, _args, _info) do
-    users = Accounts.list_users()
-    {:ok, users}
+    {:ok, Accounts.list_users()}
   end
 
   def create_user(_root, %{input: input}, _info) do
@@ -14,6 +13,13 @@ defmodule OwnershipWeb.UserResolver do
 
       _error ->
         {:error, "could not create user"}
+    end
+  end
+
+  def search_user(id, _info) do
+    case Accounts.get_user!(id) do
+      nil -> {:error, "user id [#{id}] not found!"}
+      user -> {:ok, user}
     end
   end
 end
