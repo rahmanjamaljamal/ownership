@@ -6,9 +6,36 @@ defmodule Ownership.AutomobilesTest do
   describe "cars" do
     alias Ownership.Automobiles.Car
 
-    @valid_attrs %{chassis: "some chassis", detail_id: 42, mileage: 42, model_id: 42, plate: "some plate", renavam: "some renavam", transmission: "some transmission", year: 42}
-    @update_attrs %{chassis: "some updated chassis", detail_id: 43, mileage: 43, model_id: 43, plate: "some updated plate", renavam: "some updated renavam", transmission: "some updated transmission", year: 43}
-    @invalid_attrs %{chassis: nil, detail_id: nil, mileage: nil, model_id: nil, plate: nil, renavam: nil, transmission: nil, year: nil}
+    @valid_attrs %{
+      chassis: "some chassis",
+      detail_id: 42,
+      mileage: 42,
+      model_id: 42,
+      plate: "some plate",
+      renavam: "some renavam",
+      transmission: "some transmission",
+      year: 42
+    }
+    @update_attrs %{
+      chassis: "some updated chassis",
+      detail_id: 43,
+      mileage: 43,
+      model_id: 43,
+      plate: "some updated plate",
+      renavam: "some updated renavam",
+      transmission: "some updated transmission",
+      year: 43
+    }
+    @invalid_attrs %{
+      chassis: nil,
+      detail_id: nil,
+      mileage: nil,
+      model_id: nil,
+      plate: nil,
+      renavam: nil,
+      transmission: nil,
+      year: nil
+    }
 
     def car_fixture(attrs \\ %{}) do
       {:ok, car} =
