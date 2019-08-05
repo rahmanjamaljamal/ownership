@@ -16,7 +16,7 @@ defmodule Ownership.Accounts.User do
     field(:state, :string)
     field(:type, :string)
 
-    has_many(:cars, Ownership.Automobiles.Car)
+    has_many(:cars, Ownership.Automobiles.Car, foreign_key: :user_id)
 
     timestamps()
   end
