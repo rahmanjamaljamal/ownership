@@ -4,15 +4,15 @@ defmodule Ownership.Automobiles.Car do
 
   schema "cars" do
     field(:chassis, :string)
-    field(:detail_id, :integer)
     field(:mileage, :integer)
-    field(:model_id, :integer)
     field(:plate, :string)
     field(:renavam, :string)
     field(:transmission, :string)
     field(:year, :integer)
 
     belongs_to(:users, Ownership.Accounts.User, foreign_key: :user_id)
+    belongs_to(:models, Ownership.Automobiles.Model, foreign_key: :model_id)
+    belongs_to(:details, Ownership.Automobiles.Detail, foreign_key: :detail_id)
 
     timestamps()
   end
@@ -21,8 +21,6 @@ defmodule Ownership.Automobiles.Car do
   def changeset(car, attrs) do
     car
     |> cast(attrs, [
-      :model_id,
-      :detail_id,
       :transmission,
       :mileage,
       :year,
@@ -31,8 +29,6 @@ defmodule Ownership.Automobiles.Car do
       :plate
     ])
     |> validate_required([
-      :model_id,
-      :detail_id,
       :transmission,
       :mileage,
       :year,
@@ -41,5 +37,7 @@ defmodule Ownership.Automobiles.Car do
       :plate
     ])
     |> foreign_key_constraint(:user_id)
+    |> foreign_key_constraint(:model_id)
+    |> foreign_key_constraint(:detail_id)
   end
 end

@@ -54,6 +54,7 @@ defmodule Ownership.Accounts.User do
     ])
     |> validate_format(:email, ~r/@/)
     |> update_change(:email, &String.downcase(&1))
-    |> unique_constraint(:email)
+
+    # |> unique_constraint(:email)
   end
 end

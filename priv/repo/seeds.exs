@@ -10,6 +10,8 @@
 # We recommend using the bang functions (`insert!`, `update!`
 # and so on) as they will fail if something goes wrong.
 alias Ownership.Accounts.User
+alias Ownership.Automobiles.Model
+alias Ownership.Automobiles.Detail
 alias Ownership.Repo
 
 %User{
@@ -25,5 +27,18 @@ alias Ownership.Repo
   city: "Floripa",
   number: 404,
   state: "SC"
+}
+|> Repo.insert!()
+
+%Model{
+  name: "911 GT3",
+  type: "Turbo",
+  class: "911"
+}
+|> Repo.insert!()
+
+%Detail{
+  type: "Spoiler",
+  class: "Body-kit"
 }
 |> Repo.insert!()

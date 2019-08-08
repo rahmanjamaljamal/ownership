@@ -8,9 +8,7 @@ defmodule Ownership.AutomobilesTest do
 
     @valid_attrs %{
       chassis: "some chassis",
-      detail_id: 42,
       mileage: 42,
-      model_id: 42,
       plate: "some plate",
       renavam: "some renavam",
       transmission: "some transmission",
@@ -18,9 +16,7 @@ defmodule Ownership.AutomobilesTest do
     }
     @update_attrs %{
       chassis: "some updated chassis",
-      detail_id: 43,
       mileage: 43,
-      model_id: 43,
       plate: "some updated plate",
       renavam: "some updated renavam",
       transmission: "some updated transmission",
@@ -28,9 +24,7 @@ defmodule Ownership.AutomobilesTest do
     }
     @invalid_attrs %{
       chassis: nil,
-      detail_id: nil,
       mileage: nil,
-      model_id: nil,
       plate: nil,
       renavam: nil,
       transmission: nil,
@@ -59,9 +53,7 @@ defmodule Ownership.AutomobilesTest do
     test "create_car/1 with valid data creates a car" do
       assert {:ok, %Car{} = car} = Automobiles.create_car(@valid_attrs)
       assert car.chassis == "some chassis"
-      assert car.detail_id == 42
       assert car.mileage == 42
-      assert car.model_id == 42
       assert car.plate == "some plate"
       assert car.renavam == "some renavam"
       assert car.transmission == "some transmission"
@@ -77,9 +69,7 @@ defmodule Ownership.AutomobilesTest do
       assert {:ok, car} = Automobiles.update_car(car, @update_attrs)
       assert %Car{} = car
       assert car.chassis == "some updated chassis"
-      assert car.detail_id == 43
       assert car.mileage == 43
-      assert car.model_id == 43
       assert car.plate == "some updated plate"
       assert car.renavam == "some updated renavam"
       assert car.transmission == "some updated transmission"
@@ -101,6 +91,82 @@ defmodule Ownership.AutomobilesTest do
     test "change_car/1 returns a car changeset" do
       car = car_fixture()
       assert %Ecto.Changeset{} = Automobiles.change_car(car)
+    end
+  end
+
+  describe "models" do
+    alias Ownership.Automobiles.Model
+
+    @valid_attrs %{
+      name: "some name",
+      type: "some type",
+      class: "some class"
+    }
+    @update_attrs %{
+      name: "some updated name",
+      type: "some updated type",
+      class: "some updated class"
+    }
+    @invalid_attrs %{
+      name: nil,
+      type: nil,
+      class: nil
+    }
+
+    def model_fixture(attrs \\ %{}) do
+      {:ok, model} =
+        attrs
+        |> Enum.into(@valid_attrs)
+        |> Automobiles.create_model()
+
+      model
+    end
+
+    test "list_models/0 returns all models" do
+      model = model_fixture()
+      assert Automobiles.list_model() == [model]
+    end
+
+    test "get_model!/1 returns the model with given id" do
+      model = model_fixture()
+      assert Automobiles.get_model!(model.id) == model
+    end
+
+    test "create_model/1 with valid data creates a model" do
+      assert {:ok, %Model{} = model} = Automobiles.create_model(@valid_attrs)
+      assert model.name == "some name"
+      assert model.type == "some type"
+      assert model.class == "some class"
+    end
+
+    test "create_model/1 with invalid data returns error changeset" do
+      assert {:error, %Ecto.Changeset{}} = Automobiles.create_model(@invalid_attrs)
+    end
+
+    test "update_model/2 with valid data updates the model" do
+      model = model_fixture()
+      assert {:ok, model} = Automobiles.update_model(model, @update_attrs)
+      assert %Model{} = model
+      assert model.name == "some updated name"
+      assert model.type == "some updated type"
+      assert model.class == "some updated class"
+    end
+
+    test "update_model/2 with invalid data returns error changeset" do
+      model = model_fixture()
+      assert {:error, %Ecto.Changeset{}} = Automobiles.update_model(model, @invalid_attrs)
+      assert model == Automobiles.get_model!(model.id)
+    end
+
+    test "delete_model/1 deletes the model" do
+      model = model_fixture()
+      assert {:ok, %Model{}} = Automobiles.delete_model(model)
+      assert_raise Ecto.NoResultsError, fn -> Automobiles.get_model!(model.id) end
+    end
+
+    test "change_model/1 returns a model changeset" do
+      model = model_fixture()
+      assert %Ecto.Changeset{} = Automobiles.change_model(model)
     end
   end
 end

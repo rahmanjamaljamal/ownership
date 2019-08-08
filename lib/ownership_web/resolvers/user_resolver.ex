@@ -16,7 +16,7 @@ defmodule OwnershipWeb.UserResolver do
     end
   end
 
-  def search_user(id, _info) do
+  def search_user(id) do
     case Accounts.get_user!(id) do
       nil -> {:error, "user id [#{id}] not found!"}
       user -> {:ok, user}
