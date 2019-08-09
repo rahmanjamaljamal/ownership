@@ -1,9 +1,6 @@
 defmodule OwnershipWeb.Schema do
   use Absinthe.Schema
-  alias OwnershipWeb.UserResolver
-  alias OwnershipWeb.CarResolver
-  alias OwnershipWeb.ModelResolver
-  alias OwnershipWeb.DetailResolver
+  alias OwnershipWeb.{UserResolver, CarResolver, ModelResolver, DetailResolver}
 
   # import types
   import_types(OwnershipWeb.Schema.Types)

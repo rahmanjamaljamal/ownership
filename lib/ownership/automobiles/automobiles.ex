@@ -6,9 +6,7 @@ defmodule Ownership.Automobiles do
   import Ecto.Query, warn: false
   alias Ownership.Repo
 
-  alias Ownership.Automobiles.Car
-  alias Ownership.Automobiles.Model
-  alias Ownership.Automobiles.Detail
+  alias Ownership.Automobiles.{Car, Model, Detail}
 
   @doc """
   Returns the list of cars.

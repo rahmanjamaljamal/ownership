@@ -1,8 +1,6 @@
 defmodule OwnershipWeb.CarResolver do
   alias Ownership.Automobiles
-  alias OwnershipWeb.UserResolver
-  alias OwnershipWeb.ModelResolver
-  alias OwnershipWeb.DetailResolver
+  alias OwnershipWeb.{UserResolver, ModelResolver, DetailResolver}
 
   def all_cars(_root, _args, _info) do
     cars = Automobiles.list_cars()
